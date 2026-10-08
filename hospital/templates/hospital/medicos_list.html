@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de medicos</title>
+</head>
+<body>
+    <h1>Medicos</h1>
+
+    <div class="cards">
+        {% for medico in medicos %}
+        <article class="card">
+            <p><strong>Nome: </strong>{{ medico.nome }}</p>
+            <p><strong>Especialidade: </strong>{{ medico.especialidade }}</p>
+        </article>
+        {% endfor %}
+    </div>  
+</body>
+</html>
+
+<style>
+    *{
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1{
+        padding: 10px;
+        border-bottom: 3px solid rgb(25, 122, 248) ;
+    }
+
+    body{
+        display: flex;
+        flex-direction: column;
+        padding: 2%;
+        gap: 20px;
+    }
+
+    .cards{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 20%;
+    }
+
+    .card{
+        box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.062);
+        border-radius: 10px;
+        padding: 20px;
+        transition: all ease 0.2s;
+    }
+
+    .card:hover{
+        padding: 23px;
+        border: 2px solid rgb(25, 122, 248);
+    }
+
+</style>

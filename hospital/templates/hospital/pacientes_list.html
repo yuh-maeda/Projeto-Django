@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de pacientes</title>
+</head>
+<body>
+    <h1>Pacientes</h1>
+
+    <div class="cards">
+        {% for paciente in pacientes %}
+        <article class="card">
+            <p><strong>Nome: </strong>{{ paciente.nome }}</p>
+            <p><strong>Idade: </strong>{{ paciente.idade }}</p>
+        </article>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+<style>
+    *{
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body{
+        display: flex;
+        flex-direction: column;
+        padding: 2%;
+        gap: 20px;
+    }
+
+    h1{
+        padding: 10px;
+        border-bottom: 3px solid rgb(25, 122, 248) ;
+    }
+
+    .cards{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 20%;
+    }
+
+    .card{
+        box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.062);
+        border-radius: 10px;
+        padding: 20px;
+        transition: all ease 0.2s;
+    }
+
+    .card:hover{
+        padding: 23px;
+        border: 2px solid rgb(25, 122, 248);
+    }
+
+</style>
