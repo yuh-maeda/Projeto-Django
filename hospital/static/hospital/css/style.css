@@ -1,0 +1,22 @@
+@import url(list_view.css);
+@import url(create_view.css);
+
+*{
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 3px solid rgb(25, 122, 248);
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    gap: 20px;
+}

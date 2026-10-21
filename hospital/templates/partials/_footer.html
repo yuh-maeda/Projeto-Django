@@ -1,0 +1,11 @@
+<footer class="mt-auto py-3 bg-1 fg-2 border-top">
+    <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <span>&copy; {% now "Y" %} Hospital. Todos os direitos reservados.</span>
+
+        <nav class="nav">
+            <a class="nav-link" href="{% url 'hospital:pacientes_list' %}">Pacientes</a>
+            <a class="nav-link" href="{% url 'hospital:medicos_list' %}">Médicos</a>
+            <a class="nav-link" href="{% url 'hospital:exames_list' %}">Exames</a>
+        </nav>
+    </div>
+</footer>
