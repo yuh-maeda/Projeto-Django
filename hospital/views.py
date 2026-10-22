@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DeleteView
 from hospital.forms import PacienteForm, ExameForm, MedicoForm
 from hospital.models import Pacientes, Exames, Medicos
 
@@ -39,4 +39,10 @@ class medicosCreateView(CreateView):
     model = Medicos
     form_class = MedicoForm
     template_name = "hospital/medico_form_create.html"
+    success_url = reverse_lazy("hospital:medicos_list")
+
+class medicosDeleteView(DeleteView):
+    model = Medicos
+    template_name = "hospital/medico_confirm_delete.html"
+    context_object_name = "medicos"
     success_url = reverse_lazy("hospital:medicos_list")
