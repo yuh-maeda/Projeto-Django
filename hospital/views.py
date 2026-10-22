@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from hospital.forms import PacienteForm, ExameForm, MedicoForm
 from hospital.models import Pacientes, Exames, Medicos
 
@@ -16,6 +16,13 @@ class pacientesCreateView(CreateView):
     form_class = PacienteForm
     template_name = "hospital/paciente_form_create.html"
     success_url = reverse_lazy("hospital:pacientes_list")
+    
+class pacientesUpdateView(UpdateView):
+    model = Pacientes
+    form_class = PacienteForm
+    template_name = "hospital/paciente_form_update.html"
+    context_object_name = "paciente"
+    success_url = reverse_lazy("hospital:pacientes_list")
 
 
 class examesListView(ListView):
@@ -28,6 +35,13 @@ class examesCreateView(CreateView):
     form_class = ExameForm
     template_name = "hospital/exame_form_create.html"
     success_url = reverse_lazy("hospital:exames_list")
+    
+class examesUpdateView(UpdateView):
+    model = Exames
+    form_class = ExameForm
+    template_name = "hospital/exame_form_update.html"
+    context_object_name = "exame"
+    success_url = reverse_lazy("hospital:exames_list")
 
 class medicosListView(ListView):
     model = Medicos
@@ -39,4 +53,11 @@ class medicosCreateView(CreateView):
     model = Medicos
     form_class = MedicoForm
     template_name = "hospital/medico_form_create.html"
+    success_url = reverse_lazy("hospital:medicos_list")
+    
+class medicosUpdateView(UpdateView):
+    model = Medicos
+    form_class = MedicoForm
+    template_name = "hospital/medico_form_update.html"
+    context_object_name = "medico"
     success_url = reverse_lazy("hospital:medicos_list")
