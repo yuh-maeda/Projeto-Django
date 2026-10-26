@@ -5,6 +5,8 @@ from hospital.forms import PacienteForm, ExameForm, MedicoForm
 from hospital.models import Pacientes, Exames, Medicos
 
 # Create your views here.
+
+# views pacientes
 class pacientesListView(ListView):
     model = Pacientes
     template_nome = "hospital/pacientes_list.html"
@@ -17,7 +19,13 @@ class pacientesCreateView(CreateView):
     template_name = "hospital/paciente_form_create.html"
     success_url = reverse_lazy("hospital:pacientes_list")
 
+class pacientesDeleteView(DeleteView):
+    model = Pacientes
+    template_name = "hospital/paciente_confirm_delete.html"
+    context_object_name = "pacientes"
+    success_url = reverse_lazy("hospital:pacientes_list")
 
+# views exames
 class examesListView(ListView):
     model = Exames
     template_nome = "hospital/exames_list.html"
@@ -29,6 +37,13 @@ class examesCreateView(CreateView):
     template_name = "hospital/exame_form_create.html"
     success_url = reverse_lazy("hospital:exames_list")
 
+class examesDeleteView(DeleteView):
+    model = Exames
+    template_name = "hospital/exame_confirm_delete.html"
+    context_object_name = "exames"
+    success_url = reverse_lazy("hospital:exames_list")
+
+# views medicos
 class medicosListView(ListView):
     model = Medicos
     template_nome = "hospital/medicos_list.html"
