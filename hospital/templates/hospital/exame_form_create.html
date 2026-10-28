@@ -13,11 +13,68 @@
             </a>
         </div>
 
-        <form method="post" enctype="multipart/form-data">
+        <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+
+            <div class="row mb-3">
+                <label for="id_nome" class="col-sm-2 col-form-label"> Nome do exame </label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="id_nome" name="nome" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="id_descricao" class="col-sm-2 col-form-label">Descrição</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="id_descricao" name="descricao">
+                </div>
+            </div>
+
+            <div class="form-field mb-3">
+                <label for="id_medico" class="form-label">Medico Responsável</label>
+                <select class="form-control" id="id_medico" name="medico" required>
+                    <option value="">- Selecione um -</option>
+                    {% for medico in form.medico.field.queryset %}
+                    <option value="{{ medico.pk }}">{{ medico.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-field mb-3">
+                <label for="id_paciente" class="form-label">Paciente</label>
+                <select class="form-control" id="id_paciente" name="paciente" required>
+                    <option value="">- Selecione um -</option>
+                    {% for paciente in form.paciente.field.queryset %}
+                    <option value="{{ paciente.pk }}">{{ paciente.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <fieldset class="row mb-3">
+                <legend class="col-form-label col-sm-2 pt-0">Períodos</legend>
+                <div class="col-sm-10">
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="periodo" id="gridRadios1" value="M" required>
+                        <label class="form-check-label" for="gridRadios1"> Matutino </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="periodo" id="gridRadios2" value="V">
+                        <label class="form-check-label" for="gridRadios2"> Vespertino </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="periodo" id="gridRadios3" value="N">
+                        <label class="form-check-label" for="gridRadios3"> Noturno </label>
+                    </div>
+
+                </div>
+            </fieldset>
+
             <button type="submit" class="btn-outline theme-success">Salvar</button>
         </form>
+
 
     </section>    
 {% endblock %}
